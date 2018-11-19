@@ -30,7 +30,9 @@ public class Hasher {
           messageDigest = MessageDigest.getInstance("SHA-512", "BC");
           byte[] digesta = messageDigest.digest(password.getBytes());
 
-          StringSelection selection = new StringSelection(String.valueOf(Hex.encodeHex(digesta)));
+          String hexString = String.valueOf(Hex.encodeHex(digesta));
+
+          StringSelection selection = new StringSelection(hexString);
           Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
           clipboard.setContents(selection, selection);
           System.out.println("Copied hashed password into your clipboard.");
